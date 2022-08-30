@@ -9,33 +9,55 @@ function getComputerChoice() {
         return "scissors";
     }
 }
+var computerSelection
+var  playerSelection
 
-let computerSelection = getComputerChoice()
-let playerSelection = "Rock"
+let choices = ["rock", "paper", "scissor"]
 
 function playRound(playerSelection, computerSelection) {
+    var computerSelection = getComputerChoice();
+    var  playerSelection = prompt("What's your choice?");
+   
    let playerSelectionCapitalized = playerSelection.toLowerCase();
-  
+  if (computerSelection === playerSelectionCapitalized) {
+      return "its a Draw"
+  }
  if (computerSelection === "rock" && playerSelectionCapitalized === "scissors") {
-       return "You Lose! Rock beats Scissors"
+       return "You Lose!"
    } else if (computerSelection === "rock" && playerSelectionCapitalized === "paper") {
-    return "You Win! Paper beats Rock"
+    return "You Win!"
 } else if (computerSelection === "paper" && playerSelectionCapitalized === "scissors") {
-    return "You Win! Scissors beats Paper"
+    return "You Win!"
 } else if (computerSelection === "paper" && playerSelectionCapitalized === "rock") {
-    return "You Lose! Paper beats Rock"
+    return "You Lose!"
 } else if (computerSelection === "scissors" && playerSelectionCapitalized === "paper") {
-    return "You Lose! Scissors beats Paper"
+    return "You Lose!"
 } else if (computerSelection === "scissors" && playerSelectionCapitalized === "rock") {
-    return "You Win! Rock beats Scissors"
+    return "You Win!"
 }  else {
-    return "Its a draw!"
+    return "null"
 } 
  
   }
 
+  let userWins = 0;
+  let computerWins = 0; 
   
+  function game() {
+for (let i = 0; i < 5; i++) {
+
+playRoundResult = playRound(playerSelection, computerSelection);
+console.log(playRoundResult);
+if (playRoundResult === "You Win!") {
+    userWins + 1;
+} else if (playRoundResult === "You Lose!") {
+    computerWins + 1;
+} 
+console.log(userWins, computerWins)
+
+ }
+}
  
   
-console.log(playRound(playerSelection, computerSelection))
+console.log(game())
 
