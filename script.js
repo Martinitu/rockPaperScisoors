@@ -11,6 +11,8 @@ function getComputerChoice() {
 }
 var computerSelection
 var  playerSelection
+var userWins = 0;
+var computerWins = 0; 
 
 let choices = ["rock", "paper", "scissor"]
 
@@ -18,7 +20,7 @@ function playRound(playerSelection, computerSelection) {
     var computerSelection = getComputerChoice();
     var  playerSelection = prompt("What's your choice?");
    
-   let playerSelectionCapitalized = playerSelection.toLowerCase();
+   var playerSelectionCapitalized = playerSelection.toLowerCase();
   if (computerSelection === playerSelectionCapitalized) {
       return "its a Draw"
   }
@@ -39,25 +41,36 @@ function playRound(playerSelection, computerSelection) {
 } 
  
   }
-
-  let userWins = 0;
-  let computerWins = 0; 
+ 
   
   function game() {
-for (let i = 0; i < 5; i++) {
-
+for (let i = 0; i < 5; i++) { if (userWins < 3 && computerWins < 3) {
+    
 playRoundResult = playRound(playerSelection, computerSelection);
 console.log(playRoundResult);
 if (playRoundResult === "You Win!") {
-    userWins + 1;
-} else if (playRoundResult === "You Lose!") {
-    computerWins + 1;
-} 
-console.log(userWins, computerWins)
+  
+    userWins++;
+   
+ } else if (playRoundResult == "You Lose!") {
+  computerWins++;
+
+ } 
+ console.log(userWins, computerWins)
 
  }
 }
+if (userWins === computerWins) {
+   return "the its a draw"
+} else if (userWins > computerWins) {
+    return "you won the game"
+
+} else if (computerWins > userWins) {
+    return "You lose the Game"
+}
  
+}
+
   
 console.log(game())
 
