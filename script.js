@@ -10,67 +10,84 @@ function getComputerChoice() {
     }
 }
 var computerSelection
-var  playerSelection
+var  playerSelections = document.querySelectorAll('button')
+
 var userWins = 0;
 var computerWins = 0; 
+var playerCountDisplay = document.getElementById('player');
+var computerCountDisplay = document.getElementById('computer');
+var resultDisplay = document.getElementById('result');
+console.log(resultDisplay)
+
+var roundCount = document.getElementById("round");
+
+console.log(roundCount)
+
+
+    
+    playerSelections.forEach(playerSelection => { 
+       
+        playerSelection.addEventListener('click', event => {
+        let playerButton = playerSelection.id
+        result = playRound(playerButton, computerSelection);
+        roundCount.innerHTML = result;
+        if (userWins === 3) {
+            resultDisplay.innerHTML = "YOU WON THE GAME!!"
+        } else if (computerWins === 3) {
+            resultDisplay.innerHTML = "YOU LOSE THE GAME!!"
+        }
+      else if (result === "You Win!") {
+  
+        userWins++;
+        
+     } else if (result == "You Lose!") {
+      computerWins++;
+    
+     } 
+
+   
+     console.log(userWins, computerWins)
+
+      playerCountDisplay.innerHTML = userWins;
+      computerCountDisplay.innerHTML = computerWins;
+
+   
+   });
+  
+
+});
 
 let choices = ["rock", "paper", "scissor"]
 
 function playRound(playerSelection, computerSelection) {
     var computerSelection = getComputerChoice();
-    var  playerSelection = prompt("What's your choice?");
-   
-   var playerSelectionCapitalized = playerSelection.toLowerCase();
-  if (computerSelection === playerSelectionCapitalized) {
+     //var  playerSelection = prompt("What's your choice?");
+     // var playerSelectionCapitalized = playerSelection.toLowerCase();
+  if (computerSelection === playerSelection) {
       return "its a Draw"
   }
- if (computerSelection === "rock" && playerSelectionCapitalized === "scissors") {
+ if (computerSelection === "rock" && playerSelection === "scissors") {
        return "You Lose!"
-   } else if (computerSelection === "rock" && playerSelectionCapitalized === "paper") {
+   } else if (computerSelection === "rock" && playerSelection === "paper") {
     return "You Win!"
-} else if (computerSelection === "paper" && playerSelectionCapitalized === "scissors") {
+} else if (computerSelection === "paper" && playerSelection === "scissors") {
     return "You Win!"
-} else if (computerSelection === "paper" && playerSelectionCapitalized === "rock") {
+} else if (computerSelection === "paper" && playerSelection === "rock") {
     return "You Lose!"
-} else if (computerSelection === "scissors" && playerSelectionCapitalized === "paper") {
+} else if (computerSelection === "scissors" && playerSelection === "paper") {
     return "You Lose!"
-} else if (computerSelection === "scissors" && playerSelectionCapitalized === "rock") {
+} else if (computerSelection === "scissors" && playerSelection === "rock") {
     return "You Win!"
 }  else {
     return "null"
 } 
  
   }
+
+  
+
  
-  
-  function game() {
-for (let i = 0; i < 5; i++) { if (userWins < 3 && computerWins < 3) {
-    
-playRoundResult = playRound(playerSelection, computerSelection);
-console.log(playRoundResult);
-if (playRoundResult === "You Win!") {
-  
-    userWins++;
-   
- } else if (playRoundResult == "You Lose!") {
-  computerWins++;
 
- } 
- console.log(userWins, computerWins)
-
- }
-}
-if (userWins === computerWins) {
-   return "the its a draw"
-} else if (userWins > computerWins) {
-    return "you won the game"
-
-} else if (computerWins > userWins) {
-    return "You lose the Game"
-}
- 
-}
 
   
-console.log(game())
 
